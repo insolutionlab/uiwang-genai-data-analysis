@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#12305A"><title>의왕도시공사 생성형 AI 데이터 분석 과정 · 웹교재 v1_3</title><style>
+:root{--navy:#12305A;--deep:#0B1F3B;--green:#015337;--ink:#1A1D21;--paper:#F5F6F8;--body:#3C4149;--sub:#6B7280;--hair:#DADDE3;--tint:#E9EEF6;--ghost:#B8C0CC;--white:#FFFFFF;--pbg:#F2F4F7;--pline:#E1E5EC;--slot:#FFF0B3;--slottx:#6B3F00;--gtint:#E6F0EB}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:880px;margin:0 auto;padding:0 18px}
+.top{padding:22px 0 18px}
+.cover{position:relative;overflow:hidden;border-radius:22px;padding:34px 30px 32px;color:var(--white);background:linear-gradient(120deg,#0B1F3B 0%,#12305A 60%,#1F4C86 100%);box-shadow:0 10px 28px rgba(18,48,90,.18)}
+.cover .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;color:#B9CBE6}
+.cover h1{margin-top:10px;font-size:29px;font-weight:800;letter-spacing:-.025em;line-height:1.3;color:var(--white)}
+.cover .sub{margin-top:12px;font-size:16px;color:rgba(255,255,255,.84)}
+.cover .meta{margin-top:10px;font-size:14px;color:rgba(255,255,255,.72)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,246,248,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;min-height:44px;padding:8px 15px;border-radius:999px;border:1px solid var(--hair);background:var(--white);color:var(--body);font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.chip:hover,.chip.on{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.chip:focus-visible,.btn:focus-visible{outline:3px solid #7FA6DF;outline-offset:2px}
+main{padding:6px 0 30px}
+.sec{padding:34px 0 14px}
+.sec+.sec{border-top:1px solid var(--hair)}
+.shead{display:flex;align-items:center;gap:12px}
+.smark{flex:0 0 auto;width:6px;height:26px;border-radius:3px;background:linear-gradient(180deg,var(--navy),#4A7FCB)}
+.sec h2{font-size:21px;font-weight:800;letter-spacing:-.015em;line-height:1.35}
+.intro{margin-top:12px;color:var(--body)}
+.points{list-style:none;margin:12px 0 0;display:grid;gap:7px}
+.points li{position:relative;padding-left:18px;color:var(--body);font-size:15.5px}
+.points li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--navy)}
+.cards{display:grid;gap:14px;margin-top:22px}
+.card{background:var(--white);border:1px solid var(--hair);border-radius:16px;padding:18px 18px 16px;box-shadow:0 1px 2px rgba(18,48,90,.04)}
+.card.virt{border-color:#C9D9CF;background:#F7FBF8}
+.card.task{border-left:5px solid var(--green)}
+.card.record{border-color:#C9D9CF}
+.chead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:8px}
+.kind{font-size:11.5px;font-weight:800;letter-spacing:.06em;color:var(--navy);background:var(--tint);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.kind.must{background:var(--navy);color:var(--white)}
+.kind.md{background:var(--green);color:var(--white)}
+.kind.opt{background:var(--white);color:var(--navy);border:1px solid var(--navy)}
+.kind.file{background:var(--ink);color:var(--white)}
+.kind.out{background:var(--green);color:var(--white)}
+.pid{font-size:13.5px;font-weight:800;color:var(--ink)}
+.tool{font-size:13.5px;color:var(--sub)}
+.tool b{color:var(--ink);font-weight:700}
+.card h3{font-size:17px;font-weight:700;line-height:1.4;letter-spacing:-.01em;margin-bottom:10px}
+.fileline{font-size:14px;color:var(--sub);margin-bottom:8px}
+.virtline{font-size:14.5px;font-weight:700;color:var(--green);margin-bottom:6px}
+.collab{font-size:14px;color:var(--sub);margin:10px 0 6px}
+pre.pbox{font-family:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;background:var(--pbg);border:1px solid var(--pline);border-radius:12px;padding:15px 16px;font-size:16px;line-height:1.7;color:var(--ink);font-feature-settings:"tnum";margin:0}
+mark.slot{background:var(--slot);color:var(--slottx);border-radius:4px;padding:0 3px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btns.center{justify-content:center;margin-top:18px}
+.btn{font-family:inherit;cursor:pointer;border:none;min-height:44px;padding:9px 18px;border-radius:999px;font-size:14.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.btn.copy{background:var(--navy);color:var(--white)}
+.btn.copy:hover{background:var(--deep)}
+.btn.copy.done{background:var(--green)}
+.btn.dl{background:var(--white);color:var(--navy);border:1px solid var(--ghost)}
+.btn.dl:hover{background:var(--tint)}
+.btn.all{background:var(--ink);color:var(--white);padding:12px 26px;font-size:15px;min-height:52px}
+.btn.all:hover{background:#2A2F38}
+ol.steps{list-style:none;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:14px}
+ol.steps li{background:var(--tint);border-radius:12px;border-top:4px solid var(--navy);padding:13px 14px 14px;font-size:15px;color:var(--body);line-height:1.6}
+ol.steps li b{display:block;color:var(--ink);font-weight:700;margin-bottom:6px}
+ol.steps .d{display:block}
+.outs{list-style:none;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:14px}
+.outs li{background:var(--gtint);border-radius:12px;border-top:4px solid var(--green);padding:13px 14px 14px;font-size:15px;color:var(--body);line-height:1.6}
+.outs li b{display:block;color:var(--green);font-weight:800;margin-bottom:6px}
+.tipcard{background:#FBFBFC}
+.tip p{color:var(--body);font-size:15.5px}
+.tip p+p{margin-top:8px}
+.task p{color:var(--body);font-size:15.5px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;color:var(--white);background:var(--green);padding:5px 12px;border-radius:999px;margin:4px 6px 4px 0}
+.subh{font-size:16px;font-weight:800;margin-top:26px;color:var(--navy)}
+.term{display:grid;gap:8px;margin-top:12px}
+.term li{list-style:none;background:var(--white);border:1px solid var(--hair);border-radius:12px;padding:11px 14px;font-size:15px;color:var(--body)}
+.term li b{color:var(--ink)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--white);padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .25s;z-index:99}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{padding:20px 0 40px;color:var(--sub);font-size:13px;text-align:center}
+@media print{.nav,.btns,#toast,.totop{display:none!important}.cover{box-shadow:none}.card{break-inside:avoid}body{background:#fff}}
+@media (max-width:600px){.cover{padding:26px 20px 24px}.cover h1{font-size:24px}.sec h2{font-size:19px}}
+.totop{position:fixed;right:18px;bottom:22px;z-index:60;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:999px;background:var(--navy);color:var(--white);font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(11,31,59,.18);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s}.totop.show{opacity:1;pointer-events:auto;transform:none}.totop:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+</style></head><body><header class="top" id="top"><div class="wrap"><div class="cover"><p class="eyebrow">초급 과정 · 생성형 AI 데이터 분석 과정</p><h1>생성형 AI 데이터 분석 실무</h1><p class="sub">의왕도시공사 생성형 AI 데이터 분석 초급 과정</p></div></div></header><nav class="nav" aria-label="구간 목차"><div class="wrap chips"><a class="chip" href="#start">시작</a><a class="chip" href="#files">자료</a><a class="chip" href="#wrks">웍스AI 활용법</a><a class="chip" href="#s1">1단계</a><a class="chip" href="#s2">2단계</a><a class="chip" href="#s3">3단계</a><a class="chip" href="#s4">4단계</a><a class="chip" href="#s5">5단계</a><a class="chip" href="#s6">6단계</a><a class="chip" href="#s7">7단계</a><a class="chip" href="#s8">8단계</a><a class="chip" href="#review">검증 유의사항</a><a class="chip" href="#ref">참고</a></div></nav><main class="wrap"><section class="sec" id="start"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>데이터 분석의 8단계</h2></div><ol class="steps"><li><b>1</b><span class="d">데이터 이상치 · 결측치 전처리</span></li><li><b>2</b><span class="d">기술통계</span></li><li><b>3</b><span class="d">상관 분석</span></li><li><b>4</b><span class="d">회귀분석과 성과 영향 요인 검증</span></li><li><b>5</b><span class="d">보고용 통계 해석과 시사점 도출</span></li><li><b>6</b><span class="d">고객 정성 의견 유형화와 개선 과제 도출</span></li><li><b>7</b><span class="d">분석 보고서 작성 자동화</span></li><li><b>8</b><span class="d">데이터 시각화 · 인터랙티브 웹 대시보드 제작</span></li></ol></section><section class="sec" id="files"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>과제 자료 내려받기</h2></div><p class="intro">이번 과정에서 다루는 데이터는 의왕도시공사의 주요 시설 만족도 조사와 월별 운영 현황을 담은 가상 데이터입니다. 1개 엑셀 파일 안에 만족도조사, 시설운영_월별, 안내 시트로 구성되어 있습니다.</p><div class="cards"><article class="card file virt" id="f1"><div class="chead"><span class="kind file">자료 1</span><span class="tool"><b>1 ~ 8단계</b></span></div><h3>의왕도시공사_데이터분석_과제데이터_v1_0.xlsx</h3><p class="virtline">본 과제 자료는 교육 수행을 위해 재구성된 모의 데이터입니다</p><p class="collab">시트 「만족도조사」</p><ul class="points"><li>8개 시설 이용자의 설문 응답이 수록된 원시 데이터입니다.</li><li>응답번호, 응답월, 시설명, 이용자구분, 월이용횟수, 대기시간_분, Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성, 전반만족, 재이용의향, 의견 등 15개 열로 이루어져 있습니다.</li><li>현장 설문 수집 과정의 특성상 서식 불일치, 중복 입력, 척도 밖 오류, 이상치, 서술형 결측치가 포함되어 있어 체계적인 정제가 필요합니다.</li></ul><p class="collab">열 이름 줄(파일에 적힌 그대로)</p><div class="pblock"><pre class="pbox">응답번호 · 응답월 · 시설명 · 이용자구분 · 월이용횟수 · 대기시간_분 · Q1청결 · Q2직원응대 · Q3예약편의 · Q4요금적정 · Q5안전관리 · Q6프로그램다양성 · 전반만족 · 재이용의향 · 의견</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">열 이름 줄 복사</button></div></div><p class="collab">시트 「시설운영_월별」</p><ul class="points"><li>8개 시설의 24개월 운영 지표를 기록한 월별 통계 데이터입니다.</li><li>연월, 시설명, 시설유형, 이용건수, 이용수입_원, 운영비_원, 평균기온, 민원건수 등 8개 열로 구성되어 있습니다.</li><li>시설 유형별 계절성, 수지 현황, 이용 건수와 민원 발생 간의 연관 관계를 복합적으로 분석할 수 있습니다.</li></ul><p class="collab">열 이름 줄(파일에 적힌 그대로)</p><div class="pblock"><pre class="pbox">연월 · 시설명 · 시설유형 · 이용건수 · 이용수입_원 · 운영비_원 · 평균기온 · 민원건수</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">열 이름 줄 복사</button><a class="btn dl" href="의왕도시공사_데이터분석_과제데이터_v1_0.xlsx" download="의왕도시공사_데이터분석_과제데이터_v1_0.xlsx">의왕도시공사_데이터분석_과제데이터_v1_0.xlsx 내려받기</a></div></div><p class="collab">시트 「안내」 에 열 설명이 있습니다. 내려받은 파일을 엑셀로 열어 시트 3개가 보이는지 확인한 뒤 웍스AI 에 올립니다.</p></article></div></section><section class="sec" id="wrks"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>웍스AI 활용법</h2></div><ol class="steps"><li><b>1</b><span class="d">왼쪽 메뉴의 에이전트 화면으로 이동하여 새 대화 창을 생성합니다.</span></li><li><b>2</b><span class="d">입력창 하단의 더하기(+) 단추를 눌러 과제 엑셀 파일을 업로드합니다.</span></li><li><b>3</b><span class="d">모델 선택 메뉴는 기본값인 Auto 상태를 유지합니다.</span></li><li><b>4</b><span class="d">교재에 제시된 요청문을 복사하여 입력창에 붙여 넣고 전송 화살표를 누릅니다.</span></li><li><b>5</b><span class="d">산출물은 화면의 표로 확인하고 파일 다운로드 단추가 생성되면 즉시 저장합니다.</span></li><li><b>6</b><span class="d">입력창 하단 안내에 따라 개인정보 등 민감정보는 입력하거나 업로드하지 않습니다.</span></li></ol></section><section class="sec" id="s1"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>1단계 · 데이터 이상치 · 결측치 전처리</h2></div><p class="intro">분석의 신뢰성을 확보하기 위해 설문 원시 자료에 포함된 오류, 결측치, 이상치를 식별하고 정제하는 단계입니다. 인공지능에게 정확한 정제 규칙을 부여하여 체계적인 데이터 정제 작업을 수행합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span><span class="badge">결과물 1</span></div><h3>이 단계에서 만드는 것</h3><p>만족도조사 시트의 오류와 결측치를 정제하고 세부 정제 내역이 정리된 요약 표와 정제 완료 엑셀 파일을 생성합니다.</p><p class="fileline">올리는 파일 · 의왕도시공사_데이터분석_과제데이터_v1_0.xlsx</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 1-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>결측치 및 이상치 오류 진단</h3><div class="pblock"><pre class="pbox">당신은 공공기관 데이터 정제 전문가입니다. 첨부한 의왕도시공사_데이터분석_과제데이터_v1_0.xlsx 파일의 만족도조사 시트를 정밀 진단해 주십시오.
+
+다음 작업을 수행해 주십시오.
+1. 전체 행 수와 중복 입력된 완전 일치 행의 수를 파악하십시오.
+2. 시설명 열의 띄어쓰기 오류 현황과 응답월 열의 서식 불일치 현황을 점검하십시오.
+3. Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성, 전반만족, 재이용의향 문항에서 1점부터 5점 범위를 벗어난 오류값과 텍스트 혼합 입력 건수를 확인하십시오.
+4. 대기시간_분 열과 월이용횟수 열의 극단적 이상치와 결측치 발생 건수를 산출하십시오.
+5. 진단 결과를 열 이름, 오류 유형, 발생 건수, 권장 조치 방안을 포함한 표 형태로 화면에 출력해 주십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 1-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>데이터 정제 및 정제 내역 파일 생성</h3><div class="pblock"><pre class="pbox">당신은 공공기관 데이터 정제 전문가입니다. 앞서 진단한 만족도조사 시트의 데이터를 다음 정제 규칙에 따라 일괄 처리해 주십시오.
+
+정제 규칙은 다음과 같습니다.
+1. 완전히 동일한 중복 행은 1건만 남기고 제거하십시오.
+2. 시설명의 띄어쓰기는 체육센터 A 형태로 표준화하십시오.
+3. 응답월 서식은 YYYY-MM 형태로 통일하십시오.
+4. 평가 점수나 대기시간에 문자가 섞인 값은 숫자만 추출하여 변환하십시오.
+5. 1점부터 5점 범위를 벗어난 평가 점수는 입력 오류로 처리하여 빈 칸으로 변경하십시오.
+6. 대기시간_분 열에서 180분을 초과하는 값과 월이용횟수 열에서 60회를 초과하는 값은 이상치로 처리하여 빈 칸으로 변경하십시오. 빈 칸은 임의로 채우지 않고 공란으로 유지하십시오.
+
+수행 결과를 다음 형식으로 제시해 주십시오.
+1. 정제 전후 행 수, 수정된 항목별 건수를 요약한 정제 내역 표를 화면에 출력하십시오.
+2. 정제 완료된 데이터를 포함한 엑셀 파일(xlsx) 다운로드 링크를 제공해 주십시오. 파일 생성이 어려울 경우 상위 20개 행의 정제 데이터를 표로 화면에 보여 주십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>정제 내역 표의 항목별 수정 건수가 원본 진단 수치와 정확히 부합하는지 대조합니다.</li><li>이상치와 척도 밖 오류값이 빈 칸으로 올바르게 처리되었는지 요약 결과를 점검합니다.</li><li>정제 완료 엑셀 파일을 다운로드하거나 화면의 표를 복사하여 다음 단계 활용을 준비합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>결측치와 이상치 전처리의 중요성</h3><div class="tip"><p>데이터 분석에서 가장 많은 노력이 투입되는 전처리는 분석 결과의 신뢰도를 결정짓는 필수 절차입니다.</p><p>설문 척도를 벗어난 오입력이나 비현실적인 대기시간 등은 평균과 통계치를 왜곡하므로 정량적 기준에 따라 식별해야 합니다.</p><p>공공 데이터 분석에서는 결측치를 임의의 수치로 메우지 않고 유효한 분석 대상에서만 제외하는 방식이 데이터 왜곡을 막는 표준적인 방법입니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 1</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>1단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">당신은 데이터 분석 기록 비서입니다. 1단계 전처리 과정을 내 분석 과정 MD 파일 양식에 맞추어 마크다운 텍스트로 정리해 주십시오.
+
+작성 양식은 다음과 같습니다.
+## 1단계 데이터 이상치 · 결측치 전처리
+### 1. 수행 요청문 요지
+- 수행한 오류 진단 및 정제 작업의 핵심 내용을 2줄로 요약하십시오.
+### 2. 정제 결과 요약
+- 중복 제거, 서식 통일, 척도 오류 및 이상치 처리 결과를 항목별 건수와 함께 정리하십시오.
+### 3. 담당자 판단 및 조치 사항
+- <mark class="slot">[담당자가 직접 판단하고 확정한 전처리 기준과 사유를 입력하는 빈 칸으로 남겨 두십시오]</mark>
+
+자료에 없는 내용을 임의로 추가하지 말고 실제 처리된 결과만 기술하십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s2"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>2단계 · 기술통계</h2></div><p class="intro">정제된 만족도 데이터를 바탕으로 각 변수의 중심 경향성과 분포적 특성을 수치로 요약하는 단계입니다. 평균, 중앙값, 표준편차 등을 산출하여 시설별 전반적인 만족도 수준과 격차를 객관적으로 파악합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span></div><h3>이 단계에서 만드는 것</h3><p>만족도 문항별 기초통계 요약표와 시설별 만족도 비교표를 도출하고 시설 간 차이점을 정리합니다.</p><p class="fileline">올리는 파일 · 앞 단계 정제본</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 2-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>주요 만족도 문항 기술통계 산출</h3><div class="pblock"><pre class="pbox">당신은 공공기관 통계 분석 전문가입니다. 앞 단계에서 정제된 만족도조사 데이터를 바탕으로 기술통계 분석을 수행해 주십시오. <mark class="slot">[앞 단계 정제본 파일 또는 결과 표를 여기에 적용]</mark>
+
+다음 작업을 수행해 주십시오.
+1. Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성, 전반만족, 재이용의향, 대기시간_분 변수의 유효 응답 수, 평균, 표준편차, 중앙값, 최솟값, 최댓값을 산출하십시오.
+2. 빈 칸(결측치)은 통계 계산에서 자동으로 제외하고 유효 데이터만을 기준으로 계산하십시오.
+3. 산출된 결과를 변수명, 유효응답수, 평균, 표준편차, 중앙값, 최소, 최대로 구성된 기술통계 요약표로 화면에 출력해 주십시오.
+4. 결과를 파일 다운로드 형태로 제공하고, 불가할 경우 화면의 표로 상세히 제시해 주십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 2-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>시설별 만족도 및 대기시간 비교 분석</h3><div class="pblock"><pre class="pbox">당신은 공공기관 통계 분석 전문가입니다. 정제된 데이터를 활용하여 시설별 만족도 격차와 이용 특성을 비교 분석해 주십시오.
+
+다음 작업을 수행해 주십시오.
+1. 시설명 열을 기준으로 그룹화하여 각 시설별 응답 건수, 전반만족 평균, 재이용의향 평균, 대기시간_분 평균을 산출하십시오.
+2. Q1청결부터 Q6프로그램다양성 문항의 시설별 평균 점수를 집계하십시오.
+3. 전반만족 평균 점수를 기준으로 내림차순 정렬하여 시설별 비교표를 화면에 제시하십시오.
+4. 시설별 전반만족 점수와 개별 세부 평가 문항 간의 두드러진 차이나 특징을 3가지 관점에서 객관적으로 서술하십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind opt">선택</span><span class="pid">요청문 2-3</span><span class="tool"><b>웍스AI 에이전트 대화 · 시설운영_월별 시트</b></span></div><h3>시설운영 데이터 정제 및 시설별·시설유형별 수지 집계</h3><div class="pblock"><pre class="pbox">당신은 의왕도시공사의 공공데이터 분석 전문가입니다. 함께 올린 엑셀 파일 &#x27;의왕도시공사_데이터분석_과제데이터_v1_0.xlsx&#x27;의 &#x27;시설운영_월별&#x27; 시트 데이터를 바탕으로 결측치와 이상치를 정제하고 운영 수지를 분석해 주십시오.
+
+다음 정제 규칙에 따라 전처리를 먼저 수행해 주십시오.
+1. 모든 열의 내용이 완전히 일치하는 중복 행은 1개 행만 남기고 제거해 주십시오.
+2. &#x27;연월&#x27; 열의 표기는 YYYY-MM 1개 규격으로 통일해 주십시오.
+3. &#x27;시설명&#x27; 열의 띄어쓰기를 표준 명칭 기준으로 올바르게 정비해 주십시오.
+4. &#x27;이용건수&#x27; 열에서 동일 시설의 다른 월 중앙값 대비 5배를 초과하는 이상치는 입력 오류로 판단하여 10으로 나누어 주십시오.
+5. &#x27;운영비_원&#x27; 열에서 음수로 기록된 값은 양수 부호로 전환해 주십시오.
+6. 빈 칸(결측치)은 임의의 값으로 대체하지 말고 해당 통계 연산 대상에서 제외해 주십시오.
+
+정제된 데이터를 바탕으로 다음 지표를 집계해 주십시오.
+1. 시설별 월평균 &#x27;이용건수&#x27;와 월평균 수지(&#x27;이용수입_원&#x27; 빼기 &#x27;운영비_원&#x27;)를 집계해 주십시오.
+2. 시설유형(&#x27;주차장&#x27;, &#x27;체육시설&#x27;, &#x27;공원레저&#x27;)별 월평균 &#x27;이용건수&#x27;와 월평균 수지(&#x27;이용수입_원&#x27; 빼기 &#x27;운영비_원&#x27;)를 집계해 주십시오.
+3. 24개월 누적 수지를 산출하여 흑자 시설과 적자 시설의 명단을 각각 구분하여 제시해 주십시오.
+
+출력 형식 및 주의사항:
+1. 정제 전후의 행 수 변화와 규칙별 적용 건수를 요약해 주십시오.
+2. 집계 결과는 화면에서 바로 파악할 수 있도록 텍스트 구조로 정리해 주시고, 정제 완료 데이터와 집계표를 엑셀 파일(.xlsx)로 내려받을 수 있는 다운로드 경로를 제공해 주십시오.
+3. 원본 데이터에 없는 수치나 외부 원인은 임의로 작성하지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>기술통계표의 유효 응답 수와 앞 단계 정제 데이터의 유효 건수가 일치하는지 확인합니다.</li><li>시설별 응답 수의 합계가 전체 정제 데이터 건수와 맞는지 검토합니다.</li><li>평균과 중앙값의 차이를 비교하여 데이터 분포의 치우침 여부를 관찰합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>기술통계의 개념과 대표값의 이해</h3><div class="tip"><p>기술통계는 수집된 데이터를 평균, 중앙값, 표준편차 등 핵심 통계치로 요약하여 데이터 전반의 상태를 파악하는 기초 통계 방법입니다.</p><p>평균은 데이터 전체의 중심적 경향을 보여주지만 극단적인 값에 민감하므로 중앙값과 표준편차를 함께 살펴야 분포의 안정성을 올바르게 진단할 수 있습니다.</p><p>시설별 세부 집계를 통해 기관 내 서비스 격차와 개선이 시급한 시설을 식별할 수 있습니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 2</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>2단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">당신은 데이터 분석 기록 비서입니다. 2단계 기술통계 분석 결과를 내 분석 과정 MD 파일에 추가할 수 있도록 마크다운 텍스트로 정리해 주십시오.
+
+작성 양식은 다음과 같습니다.
+## 2단계 기술통계
+### 1. 수행 요청문 요지
+- 문항별 기술통계 산출 및 시설별 비교 집계 요청 내용을 2줄로 요약하십시오.
+### 2. 기술통계 주요 결과
+- 문항별 평균적인 만족도 수준과 가장 높거나 낮은 평가를 받은 문항을 정리하십시오.
+- 시설별 전반만족 순위와 시설 간 만족도 및 대기시간 격차를 요약하십시오.
+### 3. 담당자 판단 및 시사점
+- <mark class="slot">[통계 수치를 토대로 담당자가 파악한 기관 운영 현황과 시설별 개선 우선순위를 기록하는 빈 칸으로 남겨 두십시오]</mark>
+
+자료에 없는 내용을 임의로 추가하지 말고 실제 처리된 결과만 기술하십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s3"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>3단계 · 상관 분석</h2></div><p class="intro">개별 서비스 품질 항목, 대기시간, 전반만족, 재이용의향 간의 상호 연관성을 정량적으로 측정하는 단계입니다. 피어슨 상관계수를 도출하여 전반적 만족도와 가장 밀접하게 연동되는 핵심 서비스 요인을 탐색합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span></div><h3>이 단계에서 만드는 것</h3><p>변수 간 상관계수 행렬표를 도출하고 전반만족과의 상관관계 강도 및 방향성을 분석합니다.</p><p class="fileline">올리는 파일 · 앞 단계 정제본</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 3-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>평가 문항 간 피어슨 상관계수 행렬 산출</h3><div class="pblock"><pre class="pbox">당신은 공공기관 데이터 통계 전문가입니다. 정제된 만족도조사 데이터를 활용하여 주요 평가 문항 간의 피어슨 상관계수를 산출해 주십시오. <mark class="slot">[앞 단계 정제본 파일 또는 결과 표를 여기에 적용]</mark>
+
+다음 작업을 수행해 주십시오.
+1. 분석 대상 변수는 Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성, 대기시간_분, 전반만족, 재이용의향입니다.
+2. 각 변수 쌍 간의 피어슨 상관계수(r)와 유의확률(p값)을 계산하십시오. 결측치가 포함된 행은 해당 변수 쌍 계산에서 제외하십시오.
+3. 모든 변수 간 상관계수를 가로와 세로가 교차하는 정방 행렬 형태의 표로 구성하여 화면에 출력하십시오.
+4. 상관계수 행렬 데이터를 파일로 다운로드할 수 있게 하거나 표 형태로 화면에 명확히 제시해 주십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 3-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>전반만족 기준 상관관계 심층 분석</h3><div class="pblock"><pre class="pbox">당신은 공공기관 데이터 통계 전문가입니다. 앞서 도출한 상관계수 결과를 바탕으로 핵심 성과 지표인 전반만족을 중심으로 연관성을 심층 해석해 주십시오.
+
+다음 작업을 수행해 주십시오.
+1. 전반만족 변수와 다른 모든 변수 간의 상관계수를 절대값 크기 기준 내림차순으로 정렬한 표를 제시하십시오.
+2. 상관계수의 부호(양 또는 음)와 수치 크기(강한 양의 상관, 중간 상관, 약한 상관 등)를 기준으로 연관 특성을 분류하십시오.
+3. 대기시간_분이 전반만족 및 재이용의향과 맺는 관계의 방향성과 크기를 명확히 정리하십시오.
+4. 상관관계가 높게 나타난 상위 3가지 핵심 요인을 기술하되, 높은 상관관계가 직접적인 인과관계를 의미하는 것은 아니라는 점을 유의사항으로 명시하십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind opt">선택</span><span class="pid">요청문 3-3</span><span class="tool"><b>웍스AI 에이전트 대화 · 시설운영_월별 시트</b></span></div><h3>시설운영 지표 간 상관 분석 및 시설유형별 비교</h3><div class="pblock"><pre class="pbox">당신은 의왕도시공사의 데이터 분석 담당자입니다. 엑셀 파일 &#x27;의왕도시공사_데이터분석_과제데이터_v1_0.xlsx&#x27;의 정제된 &#x27;시설운영_월별&#x27; 시트 데이터를 바탕으로 운영 지표 간 상관 분석을 수행해 주십시오.
+
+다음 지시 순서에 따라 분석을 진행해 주십시오.
+1. 8개 시설별로 데이터를 구분하여 각 시설의 &#x27;이용건수&#x27;와 &#x27;평균기온&#x27; 간 피어슨 상관계수를 산출해 주십시오. 기온 변화에 민감한 시설과 기온 영향이 거의 없는 시설군을 도출해 주십시오.
+2. 전체 시설을 1개 집단으로 통합한 전체 데이터에서 &#x27;이용건수&#x27;와 &#x27;이용수입_원&#x27;의 전체 상관계수를 산출해 주십시오. 이어서 시설유형(&#x27;주차장&#x27;, &#x27;체육시설&#x27;, &#x27;공원레저&#x27;)별로 데이터를 분류하여 각 시설유형 내에서 &#x27;이용건수&#x27;와 &#x27;이용수입_원&#x27;의 상관계수를 각각 산출해 주십시오.
+3. 전체 통합 상관계수와 시설유형별 상관계수를 나란히 비교하여 배치하고, 이용 단가가 다른 시설군을 1개로 통합하여 집계했을 때 수입과 이용량의 관계성이 은폐되거나 왜곡되는 통계적 이유를 공공시설 운영 관점에서 설명해 주십시오.
+4. 전체 데이터 및 시설별로 &#x27;이용건수&#x27;와 &#x27;민원건수&#x27; 간의 상관계수를 산출하고, 시설 이용량 증감이 민원 발생 빈도에 미치는 연관성을 분석해 주십시오.
+
+출력 형식 및 주의사항:
+1. 모든 상관계수는 소수점 3자리까지 명확히 기재해 주십시오.
+2. 분석 수치와 통계적 해석 결과를 화면에 항목별로 정리해 주시고, 텍스트 문서 파일(.txt)로 내려받을 수 있는 다운로드 경로를 제공해 주십시오.
+3. 원본 자료에 근거가 없는 외부 수치나 원인은 단정하지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>상관계수 행렬의 자기 자신과의 상관계수가 모두 1.0으로 산출되었는지 확인합니다.</li><li>모든 상관계수 값이 -1.0부터 +1.0 사이의 정상 범위에 존재하는지 검토합니다.</li><li>전반만족과의 상관계수 정렬 순서가 올바르게 배치되었는지 대조합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>상관계수의 해석과 인과관계와의 구분</h3><div class="tip"><p>상관계수는 두 변수가 선형적으로 함께 변화하는 연관성의 정도를 -1.0부터 +1.0 사이의 수치로 표현한 통계값입니다. +1.0에 가까울수록 한쪽이 커질 때 다른 쪽도 함께 커지는 강한 양의 선형 관계를 나타내며, 음의 부호는 반대 방향의 움직임을 뜻합니다.</p><p>상관계수는 두 변수가 밀접하게 연결되어 있음을 보여줄 뿐 원인과 결과의 관계를 입증하는 것은 아니므로 실제 업무 개선 시에는 인과성을 입증하는 추가 분석을 거쳐야 합니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 3</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>3단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">당신은 데이터 분석 기록 비서입니다. 3단계 상관 분석 결과를 내 분석 과정 MD 파일에 추가할 수 있도록 마크다운 텍스트로 정리해 주십시오.
+
+작성 양식은 다음과 같습니다.
+## 3단계 상관 분석
+### 1. 수행 요청문 요지
+- 상관계수 행렬 도출 및 전반만족 연관 요인 분석 요청 내용을 2줄로 요약하십시오.
+### 2. 상관 분석 핵심 결과
+- 전반만족과 가장 강한 연관성을 보인 상위 문항과 상관계수 수준을 정리하십시오.
+- 대기시간 등 음의 상관 또는 연관성이 낮은 문항의 분석 결과를 요약하십시오.
+### 3. 담당자 판단 및 시사점
+- <mark class="slot">[상관 분석 결과를 바탕으로 도출된 관리 중점 항목과 인과적 해석의 한계점을 기록하는 빈 칸으로 남겨 두십시오]</mark>
+
+자료에 없는 내용을 임의로 추가하지 말고 실제 처리된 결과만 기술하십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s4"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>4단계 · 회귀분석과 성과 영향 요인 검증</h2></div><p class="intro">전반만족을 종속변수로 설정하고 서비스 품질 항목과 대기시간을 독립변수로 투입하여 성과에 직접적인 영향을 미치는 핵심 요인을 검증하는 다중회귀분석 단계입니다. 각 요인의 상대적 영향력과 통계적 유의성을 검증하여 합리적인 자원 배분 근거를 마련합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span></div><h3>이 단계에서 만드는 것</h3><p>다중회귀분석 결과표(R², 회귀계수, p값)를 도출하고 통계적으로 유의미한 핵심 영향 요인을 선별합니다.</p><p class="fileline">올리는 파일 · 앞 단계 정제본</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 4-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>전반만족 다중회귀분석 모델 검증</h3><div class="pblock"><pre class="pbox">당신은 공공기관 계량 분석 전문가입니다. 정제된 데이터를 활용하여 전반만족에 미치는 서비스 요인의 영향력을 다중회귀분석으로 검증해 주십시오. <mark class="slot">[앞 단계 정제본 파일 또는 결과 표를 여기에 적용]</mark>
+
+다음 작업을 수행해 주십시오.
+1. 종속변수는 전반만족으로 설정하십시오.
+2. 독립변수는 Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성, 대기시간_분의 7개 변수를 동시 투입하십시오.
+3. 결측치가 포함된 데이터는 제외하고 실제 회귀분석에 투입된 유효 표본 수를 명시하십시오.
+4. 모델의 설명력(결정계수 R², 수정된 R²), 모델 적합도 검정 결과(F값, 유의확률 p값)를 산출하십시오.
+5. 각 독립변수의 비표준화 회귀계수(B), 표준오차, 표준화 회귀계수(베타), t값, 유의확률(p값)을 정리한 회귀분석 결과표를 화면에 제시하십시오.
+6. 분석 결과를 포함한 파일을 다운로드할 수 있게 하거나 표 형태로 화면에 상세히 출력해 주십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 4-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>유의미한 핵심 영향 요인 선별 및 해석</h3><div class="pblock"><pre class="pbox">당신은 공공기관 계량 분석 전문가입니다. 앞서 도출한 회귀분석 결과를 바탕으로 유의수준 5% 기준에서 통계적으로 유의미한 영향 요인을 판정하고 해석해 주십시오.
+
+다음 작업을 수행해 주십시오.
+1. p값이 0.05 미만으로 통계적으로 유의미한 독립변수와 유의하지 않은 독립변수를 구분하여 표로 제시하십시오.
+2. 유의미한 독립변수 중 표준화 회귀계수(베타)의 크기를 비교하여 전반만족에 상대적 영향력이 큰 순서대로 핵심 요인의 우선순위를 도출하십시오.
+3. 대기시간_분의 회귀계수 부호와 크기가 전반만족도에 미치는 부정적 영향 정도를 계량적으로 설명하십시오.
+4. 유의미한 변수들만으로 구성된 간이 회귀 모델을 추가 검증하고 전체 변수 투입 모델 대비 설명력(R²)의 차이를 비교 요약하십시오.
+
+자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>회귀분석 결과표에서 p값 0.05 미만인 유의미한 독립변수가 올바르게 선별되었는지 확인합니다.</li><li>결정계수 R² 값이 0과 1 사이의 타당한 범위 내에서 산출되었는지 점검합니다.</li><li>독립변수들의 표준화 회귀계수(베타) 부호가 앞서 확인한 상관관계 방향성과 일치하는지 대조합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>회귀분석의 결정계수(R²)와 유의확률(p값)의 의미</h3><div class="tip"><p>다중회귀분석의 회귀계수는 다른 변수를 통제한 뒤의 연관 크기를 보여 줄 뿐, 자료와 설계의 가정이 갖춰지지 않으면 인과를 확정하지 않습니다.</p><p>결정계수 R²은 투입된 요인들이 종속변수의 전체 변동을 얼마나 설명하는지 보여주는 모형 설명력 지표입니다.</p><p>유의확률 p값은 관찰된 영향력이 우연히 나타났을 가능성을 나타내며 일반적으로 0.05 미만일 때 통계적으로 신뢰할 수 있는 핵심 영향 요인으로 판정합니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 4</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>4단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">당신은 데이터 분석 기록 비서입니다. 4단계 회귀분석 결과를 내 분석 과정 MD 파일에 추가할 수 있도록 마크다운 텍스트로 정리해 주십시오.
+
+작성 양식은 다음과 같습니다.
+## 4단계 회귀분석과 성과 영향 요인 검증
+### 1. 수행 요청문 요지
+- 다중회귀분석 모형 설정 및 핵심 영향 요인 검증 요청 내용을 2줄로 요약하십시오.
+### 2. 회귀분석 검증 결과
+- 모델의 설명력(R²)과 적합도 통계 결과를 요약하십시오.
+- 유의수준 5% 기준에서 채택된 유의미한 서비스 품질 요인과 상대적 영향력 순위를 정리하십시오.
+- 대기시간이 전반만족에 미치는 영향 분석 결과를 명시하십시오.
+### 3. 담당자 의사결정 및 자원 배분 방향
+- <mark class="slot">[회귀분석 검증 결과를 바탕으로 시설 개선 예산 및 자원을 우선 투입할 항목에 대한 담당자의 정책적 판단을 기록하는 빈 칸으로 남겨 두십시오]</mark>
+
+자료에 없는 내용을 임의로 추가하지 말고 실제 처리된 결과만 기술하십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s5"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>5단계 · 보고용 통계 해석과 시사점 도출</h2></div><p class="intro">앞선 단계에서 분석한 기술통계, 상관관계, 회귀분석 결과를 종합하여 실무자가 이해할 수 있는 언어로 통계적 의미를 해석합니다. 통계 수치 자체를 나열하는 데 그치지 않고 경영진 보고와 시설 운영 정책 결정에 필요한 시사점으로 전환하는 방법을 학습합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span></div><h3>이 단계에서 만드는 것</h3><p>회귀분석 성과 영향 요인과 시설별 운영 지표를 결합하여 핵심 문제점을 진단하고 개선 시사점 요약표를 도출합니다.</p><p class="fileline">올리는 파일 · 앞 단계 정제본</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 5-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>성과 영향 요인 통계 해석 및 개선 우선순위 도출</h3><div class="pblock"><pre class="pbox">역할: 의왕도시공사 데이터 분석 담당자
+자료: 앞선 4단계 회귀분석 및 상관분석 결과
+다음 지시사항에 따라 통계 결과를 실무 보고용으로 해석해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 종속변수인 전반만족에 통계적으로 유의한 영향을 미치는 독립변수들을 영향력 크기 순서대로 정리해 주십시오.
+3. 유의하지 않게 나타난 독립변수들의 실무적 의미와 해석상 주의점을 설명해 주십시오.
+4. 분석 결과를 바탕으로 시설 운영 개선을 위한 우선순위 과제를 정리해 주십시오.
+5. 자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.
+출력 형식: 분석 결과 요약 표 및 핵심 해석 글</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 5-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>시설별 만족도 취약점 진단 및 맞춤형 시사점 도출</h3><div class="pblock"><pre class="pbox">역할: 의왕도시공사 시설 운영 기획 담당자
+자료: 의왕도시공사_데이터분석_과제데이터_v1_0.xlsx 파일의 만족도조사 시트 정제본 및 앞선 기술통계 결과
+다음 지시사항에 따라 시설별 진단과 시사점을 도출해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 시설명 8곳(공영주차장 A, 공영주차장 B, 공영주차장 C, 체육센터 A, 체육센터 B, 수영장 A, 레저시설 A, 레저시설 B)별로 전반만족 점수와 대기시간_분, Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성 문항의 수준을 비교 진단해 주십시오.
+3. 상대적으로 만족도가 낮거나 특정 문항 점수가 저조한 취약 시설을 선정하고, 해당 시설의 집중 개선 항목을 제시해 주십시오.
+4. 시설 유형별 공통 과제와 시설별 특수 과제를 구분하여 시사점을 작성해 주십시오.
+5. 자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.
+출력 형식: 시설별 진단 비교 표 및 맞춤형 시사점 요약</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>통계적으로 유의한 독립변수와 유의하지 않은 독립변수의 구분이 명확한지 점검합니다.</li><li>도출된 시사점이 임의의 추정이 아니라 회귀분석 및 기술통계 결과와 정합성을 이루는지 확인합니다.</li><li>표로 출력된 결과와 함께 텍스트 요약이 명확히 제시되었는지 대조합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>통계 결과의 비즈니스 언어 전환과 의사결정 시사점</h3><div class="tip"><p>데이터 분석에서 통계 수치 자체는 현상의 요약일 뿐이며 보고의 핵심은 비즈니스 맥락에서의 의미 해석입니다.</p><p>회귀계수의 부호와 크기를 바탕으로 어떤 요인에 자원을 집중해야 성과가 극대화되는지 우선순위를 정해야 합니다.</p><p>통계적으로 유의하지 않은 변수 역시 중요하지 않다는 뜻이 아니라 현재 데이터 범위 내에서 직접적인 영향이 검증되지 않았음을 명확히 짚어주어야 잘못된 정책 판단을 막을 수 있습니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 5</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>5단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">다음 서식에 맞추어 지금까지 웍스AI로 수행한 5단계 분석 과정을 마크다운 텍스트로 정리해 주십시오.
+## 5단계 보고용 통계 해석과 시사점 도출
+- 수행한 요청문 요지:
+- 도출된 통계 해석 및 시사점 결과:
+- 담당자 판단 및 향후 적용 메모: (이 항목은 작성하지 말고 빈 칸으로 둠)</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s6"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>6단계 · 고객 정성 의견 유형화와 개선 과제 도출</h2></div><p class="intro">만족도조사 시트에 포함된 이용자의 자유 서술 정성 의견 텍스트를 의미 단위로 분류하고 유형화합니다. 정량 데이터 수치만으로는 파악하기 힘든 이용자의 구체적인 불편 사항과 건의를 추출하여 실행 가능한 개선 과제로 구체화합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span></div><h3>이 단계에서 만드는 것</h3><p>텍스트 의견을 핵심 유형별로 분류 집계하고, 정량 지표 취약 시설의 정성 불만 사항을 매칭하여 구체적인 현장 개선 과제를 도출합니다.</p><p class="fileline">올리는 파일 · 앞 단계 정제본</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 6-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>정성 의견 텍스트 데이터 분류 및 유형별 집계</h3><div class="pblock"><pre class="pbox">역할: 의왕도시공사 고객만족 담당 분석가
+자료: 의왕도시공사_데이터분석_과제데이터_v1_0.xlsx 파일의 만족도조사 시트 정제본
+다음 지시사항에 따라 의견 열의 텍스트 데이터를 분석해 주십시오.
+1. 의견 열에 작성된 서술형 텍스트 응답을 의미와 내용에 따라 핵심 유형별로 분류해 주십시오.
+2. 분류된 유형별 빈도수와 비중을 계산하여 내림차순으로 정리해 주십시오.
+3. 시설명 8곳(공영주차장 A, 공영주차장 B, 공영주차장 C, 체육센터 A, 체육센터 B, 수영장 A, 레저시설 A, 레저시설 B)별로 가장 많이 나타난 정성 의견 유형을 매핑해 주십시오.
+4. 의견이 비어 있는 빈 칸 데이터는 셈에서 제외하고 분석을 진행해 주십시오.
+5. 자료에 없는 사실이나 임의의 분류는 배제하고 실제 응답 원문에 기반하여 유형을 정의해 주십시오.
+출력 형식: 의견 유형 분류 표 및 시설별 주요 불만 유형 현황 표</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 6-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>정량 분석 결과와 정성 의견을 결합한 통합 개선 과제 도출</h3><div class="pblock"><pre class="pbox">역할: 의왕도시공사 경영혁신 과제 기획자
+자료: 5단계 통계 시사점 결과 및 6-1단계 정성 의견 유형화 결과
+다음 지시사항에 따라 정량 분석과 정성 의견을 결합한 실행 과제를 도출해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 회귀분석에서 전반만족에 중요한 영향을 미치면서도 점수가 저조했던 항목과 정성 의견에서 다수를 차지한 고객 요구 사항을 연계해 주십시오.
+3. 취약 시설별로 고객 불만이 집중된 원인을 정성 의견 원문 맥락을 통해 진단해 주십시오.
+4. 즉시 개선 가능한 단기 과제와 예산 및 시스템 구축이 필요한 중장기 과제를 구분하여 구체적인 실행 방안을 제안해 주십시오.
+5. 자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.
+출력 형식: 정량 정성 결합 진단 표 및 실행 개선 과제 목록</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>서술형 의견이 누락 없이 의미 있는 범주로 분류 집계되었는지 확인합니다.</li><li>정성 의견 유형화 결과가 정량 지표의 취약점과 자연스럽게 연결되는지 점검합니다.</li><li>시설별 주요 의견 유형이 실제 원문 내용과 부합하는지 대조합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>정량 지표와 정성 텍스트의 상호 보완을 통한 과제 구체화</h3><div class="tip"><p>점수 형태의 정량 데이터는 이용자의 만족 수준과 영향력 크기를 수치로 보여주지만 구체적으로 어떤 점이 문제인지는 설명하지 못합니다.</p><p>반면 자유 서술형 정성 의견은 시설 고장, 청결 불량, 예약 불편 등 생생한 맥락과 원인을 담고 있습니다.</p><p>정량 분석으로 우선순위가 높은 영역을 특정하고 정성 의견으로 세부 원인을 규명할 때 실질적인 실행 계획을 수립할 수 있습니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 6</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>6단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">다음 서식에 맞추어 지금까지 웍스AI로 수행한 6단계 분석 과정을 마크다운 텍스트로 정리해 주십시오.
+## 6단계 고객 정성 의견 유형화와 개선 과제 도출
+- 수행한 요청문 요지:
+- 도출된 정성 의견 유형 및 통합 개선 과제:
+- 담당자 판단 및 향후 적용 메모: (이 항목은 작성하지 말고 빈 칸으로 둠)</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s7"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>7단계 · 분석 보고서 작성 자동화</h2></div><p class="intro">정제부터 회귀분석, 정성 유형화에 이르는 전 과정을 집약하여 경영진과 이해관계자에게 보고할 최종 보고서를 생성합니다. 5W 구조에 맞추어 초안을 작성하고 공공문서 표준 양식 텍스트로 가공한 뒤 웍스 공식 스킬을 활용하여 한글 문서 파일로 변환합니다.</p><div class="cards"><article class="card task"><div class="chead"><span class="kind out">과제</span><span class="badge">결과물 2</span><span class="badge">결과물 3</span></div><h3>이 단계에서 만드는 것</h3><p>5W 보고서 초안, 공공문서 규격 텍스트, hwpx 한글 보고서 파일, 전체 분석 과정이 기록된 완성형 MD 파일을 순차적으로 생성합니다.</p><p class="fileline">올리는 파일 · 앞 단계 정제본</p></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 7-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>5W 구조 기반 분석 종합 보고서 초안 작성</h3><div class="pblock"><pre class="pbox">역할: 의왕도시공사 기획예산실 데이터 분석 총괄 담당자
+자료: 1단계부터 6단계까지의 데이터 정제, 기술통계, 상관분석, 회귀분석, 통계 시사점, 정성 의견 분석 결과
+다음 5W 체계에 맞추어 경영진 보고용 종합 분석 보고서 초안을 작성해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. Who(대상과 주체): 의왕도시공사 시설 운영 주체와 시설 이용 고객(주민, 직장인, 학생, 고령자) 특성을 기술해 주십시오.
+3. Why(추진 배경과 필요성): 이용자 만족도 조사 데이터 분석의 배경과 시설 개선 필요성을 설명해 주십시오.
+4. What(핵심 과제와 방향): 회귀분석을 통해 검증된 성과 영향 요인과 정성 불만 유형을 결합하여 집중 관리할 핵심 개선 방향을 제시해 주십시오.
+5. How(세부 실행 계획): 단기 현장 정비 사항과 중장기 시스템 개선 계획을 구체적 실행 방안으로 수립해 주십시오.
+6. Will(기대효과와 향후 조치): 실행 방안 도입 시 예상되는 이용자 만족도 변화와 향후 환류 일정을 제시해 주십시오.
+7. 자료에 없는 수치, 출처, 원인은 만들지 말고 확인 불가로 표기해 주십시오.
+출력 형식: 5W 구조 완성형 보고서 초안</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 7-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>공공문서 표준 서식 텍스트 변환</h3><div class="pblock"><pre class="pbox">역할: 의왕도시공사 행정 공문서 작성 전문가
+자료: 7-1단계에서 도출된 5W 종합 보고서 초안
+다음 지시사항에 따라 공공기관 표준 보고서 양식의 텍스트(.txt)로 변환해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 문서 구성을 제목, 개요 표, 추진 배경, 세부 내용, 추진 일정, 기대효과의 체계로 재구성해 주십시오.
+3. 문장 끝은 개조식 종결 어미(~함, ~추진 등)를 적용하여 간결하고 명확하게 정돈해 주십시오.
+4. 핵심 통계 지표와 실행 과제는 상하 위계 기호(1., 가., (1), (가))를 사용하여 가독성을 높여 주십시오.
+5. 공공문서 양식 텍스트 전체를 복사하여 바로 활용할 수 있도록 코드 블록 형태로 제공해 주십시오.
+출력 형식: 공공문서 표준 양식 텍스트 전문</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 7-3</span><span class="tool"><b>웍스AI 스킬 /hwpx-docs</b></span></div><h3>/hwpx-docs 스킬을 활용한 한글 보고서 파일 생성</h3><div class="pblock"><pre class="pbox">/hwpx-docs 다음 공공문서 양식 텍스트를 바탕으로 다운로드 가능한 의왕도시공사 시설 만족도 분석 보고서 한글 문서를 생성해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 제목: 2026년 시설 이용자 만족도 분석 및 시설 개선 추진계획
+3. 문서 구성: 제목, 개요 표, 추진 배경, 세부 내용, 추진 일정, 기대효과
+4. 한글 문서 서식 규격을 적용하고 완료 후 다운로드 링크 단추를 생성해 주십시오.
+5. 파일 생성이 원활하지 않을 경우 본문에 표와 텍스트 형태로 전체 내용을 출력해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 7-4</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>내 분석 과정 마크다운 파일 완성</h3><div class="pblock"><pre class="pbox">역할: 데이터 분석 프로젝트 아카이빙 전문가
+자료: 1단계부터 7단계까지 누적 기록된 각 단계별 기록 요청문 결과
+다음 지시사항에 따라 전체 분석 과정을 집약한 최종 마크다운(.md) 파일을 완성해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 1단계 데이터 전처리부터 7단계 보고서 자동화까지의 수행 요청문 요지와 핵심 결과를 빠짐없이 통합해 주십시오.
+3. 문서 제목을 &#x27;# 의왕도시공사 생성형 AI 데이터 분석 수행 기록&#x27;으로 지정하고 각 단계별로 수준 2 제목(##)을 적용해 주십시오.
+4. 각 단계 끝의 &#x27;담당자 판단 및 향후 적용 메모&#x27; 항목은 학습자가 직접 채워 넣을 수 있도록 빈 칸을 유지해 주십시오.
+5. 완성된 전체 마크다운 내용을 단일 코드 블록 형태로 출력하고 다운로드 가능한 파일로 제공해 주십시오.
+출력 형식: 완성형 분석 과정 마크다운 텍스트 전문</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>5W 체계(Who, Why, What, How, Will)가 누락 없이 보고서에 반영되었는지 점검합니다.</li><li>공공문서 표준 양식에 맞추어 개조식 문장과 구조화된 위계가 적용되었는지 확인합니다.</li><li>웍스AI에서 hwpx 한글 파일 다운로드 단추가 생성되었는지 확인하고 수치 왜곡이 없는지 원본과 대조합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>5W 체계와 생성형 AI를 활용한 행정 공공문서 자동화</h3><div class="tip"><p>데이터 분석의 최종 가치는 정책 입안자와 경영진을 설득하는 보고서로 전달될 때 발현됩니다.</p><p>공공기관 문서는 Who(대상), Why(추진 배경), What(핵심 과제), How(실행 방안), Will(기대효과)의 논리적 흐름과 명확한 위계 구조를 갖추어야 합니다.</p><p>생성형 AI를 통해 정량 정성 분석 결과를 구조화된 텍스트로 가공하고 표준 한글 파일로 자동 변환함으로써 보고서 작성 시간을 대폭 줄일 수 있습니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 7</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>7단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">다음 서식에 맞추어 지금까지 웍스AI로 수행한 7단계 분석 과정을 마크다운 텍스트로 정리해 주십시오.
+## 7단계 분석 보고서 작성 자동화
+- 수행한 요청문 요지:
+- 도출된 보고서 구성 및 파일 생성 결과:
+- 담당자 판단 및 향후 적용 메모: (이 항목은 작성하지 말고 빈 칸으로 둠)</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="s8"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>8단계 · 데이터 시각화 · 인터랙티브 웹 대시보드 제작</h2></div><p class="intro">정제된 엑셀 데이터를 바탕으로 웹 브라우저에서 단독으로 작동하는 1개 파일 형태의 인터랙티브 대시보드를 제작합니다. 외부 서버나 별도 설치 없이 시설별, 월별 필터링과 반응형 차트를 통해 주요 지표와 분석 결과를 직관적으로 탐색합니다.</p><div class="cards"><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 8-1</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>단일 html 파일 기반 인터랙티브 웹 대시보드 제작</h3><div class="pblock"><pre class="pbox">역할: 데이터 시각화 웹 개발 전문가
+자료: 의왕도시공사_데이터분석_과제데이터_v1_0.xlsx 파일의 만족도조사 시트 정제본 및 회귀분석, 정성 의견 분석 결과
+외부 네트워크 접속 없이 브라우저에서 단독으로 실행되는 완성형 html 1개 파일 대시보드를 작성해 주십시오.
+1. 화면 상단에 핵심 성과 지표(전체 응답 수, 전반만족 평균, 재이용의향 평균, 평균 대기시간_분)를 보여주는 요약 숫자 카드를 배치해 주십시오.
+2. 필터 영역에 시설명 8곳(공영주차장 A, 공영주차장 B, 공영주차장 C, 체육센터 A, 체육센터 B, 수영장 A, 레저시설 A, 레저시설 B)과 응답월을 선택할 수 있는 드롭다운 메뉴를 구성해 주십시오.
+3. 필터 선택 시 연동되는 반응형 차트 4개 이상을 구성해 주십시오.
+   - 차트 1: 시설별 전반만족 및 재이용의향 비교 바 차트
+   - 차트 2: 세부 항목(Q1청결, Q2직원응대, Q3예약편의, Q4요금적정, Q5안전관리, Q6프로그램다양성) 평균 레이더 또는 바 차트
+   - 차트 3: 성과 영향 요인 회귀계수 영향력 비교 차트
+   - 차트 4: 고객 정성 의견 주요 유형별 빈도 분포 차트
+4. 하단에는 성과 영향 요인 계수 요약 표와 고객 정성 의견 유형 표를 함께 배치해 주십시오.
+5. 외부 CDN 라이브러리 링크 없이 순수 자바스크립트와 내장 CSS만으로 완결되게 코딩해 주십시오.
+6. 완성된 코드는 다운로드 가능한 html 파일 또는 복사 가능한 단일 코드 블록으로 제공해 주십시오.
+출력 형식: 완성형 단일 html 웹 대시보드 코드</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind must">요청문</span><span class="pid">요청문 8-2</span><span class="tool"><b>웍스AI 에이전트 대화</b></span></div><h3>웹 대시보드 인터페이스 및 시각화 기능 개선 요청문</h3><div class="pblock"><pre class="pbox">역할: UI 및 UX 개선 전문가
+자료: 8-1단계에서 생성된 웹 대시보드 html 코드
+앞서 제작된 웹 대시보드 html 코드를 다음 요구사항에 맞추어 수정 보완해 주십시오.
+1. <mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+2. 필터 조작 시 차트와 상단 요약 카드의 숫자가 깜빡임 없이 즉각 반응하도록 자바스크립트 이벤트 처리를 개선해 주십시오.
+3. 시각적 가독성을 높이기 위해 공공기관 신뢰감을 주는 색상 팔레트를 적용하고 차트 내 툴팁(마우스 오버 시 수치 표시) 기능을 강화해 주십시오.
+4. 모바일 및 태블릿 화면에서도 차트 레이아웃이 깨지지 않도록 반응형 그리드 스타일을 보완해 주십시오.
+5. 수정된 전체 소스코드를 누락 없이 단일 html 파일 형태로 다시 제공해 주십시오.
+출력 형식: 수정 보완된 완성형 단일 html 코드</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card prompt"><div class="chead"><span class="kind opt">선택</span><span class="pid">요청문 8-3</span><span class="tool"><b>웍스AI 에이전트 대화 · 시설운영_월별 시트</b></span></div><h3>시설운영 추이와 수지 분석을 반영한 대시보드 확장</h3><div class="pblock"><pre class="pbox">당신은 공공기관 데이터 시각화 웹 개발 전문가입니다. 앞서 8단계에서 구현한 대시보드 html 코드에 &#x27;의왕도시공사_데이터분석_과제데이터_v1_0.xlsx&#x27;의 &#x27;시설운영_월별&#x27; 시트 정제 데이터를 결합하여 기능을 확장한 단일 html 웹페이지를 제작해 주십시오.
+
+<mark class="slot">[앞 단계 결과를 여기에 붙여 넣음]</mark>
+
+위의 기존 대시보드 코드에 다음 시각화 구성 요소를 통합하여 기능을 확장해 주십시오.
+1. 2024년 11월부터 2026년 10월까지 월별 &#x27;이용건수&#x27;의 변화 추세를 직관적으로 확인할 수 있는 시계열 꺾은선 차트를 추가해 주십시오.
+2. 대시보드 화면 상단에 &#x27;시설유형&#x27;(전체, 주차장, 체육시설, 공원레저)을 선택할 수 있는 필터 요소를 추가해 주십시오. 필터를 변경할 때 꺾은선 차트와 수지 지표가 즉시 반응하여 다시 계산되도록 자바스크립트 이벤트를 연결해 주십시오.
+3. 시설별 총 수지(&#x27;이용수입_원&#x27; 빼기 &#x27;운영비_원&#x27;)를 직관적으로 비교할 수 있는 막대 차트를 추가해 주십시오. 흑자 시설과 적자 시설이 명확히 대비되도록 막대 색상을 구분하여 시각화해 주십시오.
+4. 외부 네트워크 연결이나 추가 라이브러리 설치 없이 로컬 브라우저에서 단독으로 바로 열리는 단일 html 파일(CSS 및 JavaScript 내장)로 완성해 주십시오.
+
+출력 형식 및 주의사항:
+1. 수정 및 확장이 완료된 전체 html 소스 코드를 온전하게 출력해 주시고, 브라우저에서 열 수 있는 단일 html 파일 다운로드 경로를 제공해 주십시오.
+2. 원본 데이터에 포함되지 않은 수치나 항목은 가공하여 지어내지 말고 확인 불가로 표기해 주십시오.</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article><article class="card"><div class="chead"><span class="kind">확인</span></div><h3>결과를 확인하는 기준</h3><ul class="points"><li>생성된 html 파일이 외부 인터넷 연결 없이 로컬 브라우저에서 단독으로 정상 열리는지 점검합니다.</li><li>시설명과 응답월 필터를 변경했을 때 상단 숫자 카드와 차트가 동적으로 정상 연동되는지 확인합니다.</li><li>차트 4개 이상과 통계 표가 깨짐 없이 반응형으로 표시되는지 대조합니다.</li></ul></article><article class="card tipcard"><div class="chead"><span class="kind">풀이</span></div><h3>단일 html 기반 반응형 시각화 대시보드의 원리와 활용</h3><div class="tip"><p>인터랙티브 웹 대시보드는 정적 보고서와 달리 사용자가 직접 조건을 변경하며 데이터를 입체적으로 탐색할 수 있는 도구입니다.</p><p>외부 네트워크 연결이 제한된 공공기관 업무 환경에서는 외부 라이브러리 링크 없이 파일 내부에 스타일시트와 스크립트를 완결한 단일 파일 구조가 안전하고 이식성이 높습니다.</p><p>경영진 보고 및 부서 간 회의 시 현장에서 실시간으로 데이터를 조회하고 의사결정을 지원하는 협업 도구로 활용할 수 있습니다.</p></div></article><article class="card prompt record"><div class="chead"><span class="kind md">기록</span><span class="pid">기록 8</span><span class="tool"><b>같은 대화 · 결과를 내 분석 과정 MD 에 이어 붙임</b></span></div><h3>8단계를 내 분석 과정 MD 에 이어 적기</h3><div class="pblock"><pre class="pbox">다음 서식에 맞추어 지금까지 웍스AI로 수행한 8단계 분석 과정을 마크다운 텍스트로 정리해 주십시오.
+## 8단계 데이터 시각화 · 인터랙티브 웹 대시보드 제작
+- 수행한 요청문 요지:
+- 도출된 대시보드 html 파일 기능 및 구성:
+- 담당자 판단 및 향후 적용 메모: (이 항목은 작성하지 말고 빈 칸으로 둠)</pre><div class="btns"><button type="button" class="btn copy" data-act="copy">요청문 복사</button></div></div></article></div></section><section class="sec" id="review"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>결과 검증 및 유의사항</h2></div><ol class="steps"><li><b>1</b><span class="d">원본 데이터 대조: 생성형 AI가 산출한 집계 합계와 비율이 원본 엑셀 데이터의 기초 수치와 일치하는지 대조 확인합니다.</span></li><li><b>2</b><span class="d">허위 수치 배제: 원본 데이터에 없는 가상의 통계치, 외부 출처, 임의의 인과관계가 보고서에 포함되지 않았는지 점검합니다.</span></li><li><b>3</b><span class="d">통계 해석의 타당성: 상관관계를 섣불리 인과관계로 단정하지 않았으며, 회귀분석 유의수준(p값)을 올바르게 반영했는지 검토합니다.</span></li><li><b>4</b><span class="d">개인정보 및 식별 정보 보호: 프롬프트 입력창과 결과 보고서에 개인을 식별할 수 있는 민감정보가 포함되지 않았는지 확인합니다.</span></li></ol></section><section class="sec" id="ref"><div class="shead"><span class="smark" aria-hidden="true"></span><h2>참고 · 용어</h2></div><ul class="term"><li><b>결측치</b> · 데이터 수집 과정에서 응답 누락이나 오류 등으로 인해 값이 비어 있는 상태를 의미합니다.</li><li><b>이상치</b> · 정상적인 데이터의 분포 범위에서 비정상적으로 크게 벗어난 극단적인 값을 의미합니다.</li><li><b>기술통계</b> · 수집된 데이터의 특성을 요약하기 위해 평균, 중앙값, 표준편차, 최댓값, 최솟값 등을 계산하는 기초 통계 방법입니다.</li><li><b>상관계수</b> · 2개 변수 사이의 선형적 관련성 강도와 방향을 -1부터 1 사이의 수치로 나타낸 지표입니다.</li><li><b>회귀분석</b> · 1개 이상의 독립변수가 종속변수에 미치는 영향력의 크기와 방향을 수학적 모델로 추정하는 통계 기법입니다.</li><li><b>p값</b> · 관측된 통계적 관계가 우연에 의해 발생했을 확률을 나타내며 통상 0.05 미만일 때 통계적으로 유의하다고 판정합니다.</li><li><b>R²(결정계수)</b> · 독립변수들이 종속변수의 전체 변동을 몇 퍼센트나 설명하는지를 0부터 1 사이의 값으로 나타내는 설명력 지표입니다.</li><li><b>종속변수</b> · 다른 변수의 영향을 받아 변화하는 결과 변수로 분석의 최종 관심 대상이 되는 성과 지표입니다.</li><li><b>독립변수</b> · 종속변수의 변화에 원인이나 영향 요인으로 작용한다고 가정되는 예측 변수입니다.</li><li><b>유형화</b> · 서술형 텍스트 등 비정형 정성 데이터를 유사한 주제나 의미를 가진 범주로 묶어 정리하는 분류 기법입니다.</li></ul></section></main><footer>의왕도시공사 생성형 AI 데이터 분석 실무 과정 · 이소민</footer><a class="totop" href="#top" aria-label="처음으로 가기">처음으로</a><div id="toast" role="status" aria-live="polite"></div><script>(function(){
+  "use strict";
+  var TITLE=document.title;
+  var toastTimer=null;
+  function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove("show");},1700);}
+  function fallbackCopy(text){return new Promise(function(ok,no){var ta=document.createElement("textarea");ta.value=text;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.top="0";ta.style.left="0";ta.style.opacity="0";ta.style.fontSize="16px";document.body.appendChild(ta);ta.focus();ta.select();try{ta.setSelectionRange(0,text.length);}catch(e){}var r=false;try{r=document.execCommand("copy");}catch(e){r=false;}document.body.removeChild(ta);if(r)ok();else no(new Error("copy failed"));});}
+  function copyText(text){if(navigator.clipboard&&window.isSecureContext){return navigator.clipboard.writeText(text).catch(function(){return fallbackCopy(text);});}return fallbackCopy(text);}
+  function markDone(btn){var o=btn.getAttribute("data-label");if(!o){o=btn.textContent;btn.setAttribute("data-label",o);}clearTimeout(btn._t);btn.textContent="복사됨";btn.classList.add("done");btn._t=setTimeout(function(){btn.textContent=o;btn.classList.remove("done");},1800);}
+  function selectPre(pre){try{if(!pre)return;var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}}
+  function save(name,text,mime){try{var blob=new Blob([text],{type:(mime||"text/plain")+";charset=utf-8"});var u=URL.createObjectURL(blob);var a=document.createElement("a");a.href=u;a.download=name;a.rel="noopener";document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(u);},1200);toast("내려받기를 시작했습니다");}catch(e){toast("이 화면에서는 내려받기를 쓸 수 없습니다. 복사 단추로 요청문을 복사해 대화창에 붙여 넣습니다");}}
+  function buildAll(md){
+    var o=(md?"# ":"")+TITLE+"\n";
+    var secs=document.querySelectorAll("section.sec");
+    for(var i=0;i<secs.length;i++){
+      var cards=secs[i].querySelectorAll("article.card.prompt");
+      if(!cards.length)continue;
+      o+="\n"+(md?"## ":"■ ")+secs[i].querySelector("h2").textContent+"\n";
+      for(var j=0;j<cards.length;j++){
+        var c=cards[j];var pid=c.querySelector(".pid");var h3=c.querySelector("h3");var tool=c.querySelector(".tool");
+        o+="\n"+(md?"### ":"")+(pid?"["+pid.textContent+"] ":"")+h3.textContent+"\n";
+        if(tool)o+=tool.textContent+"\n";
+        var blocks=c.querySelectorAll(".pblock");
+        for(var k=0;k<blocks.length;k++){var pre=blocks[k].querySelector("pre.pbox");
+          o+=(md?"\n```\n":"〔요청문〕\n")+pre.textContent.trim()+(md?"\n```\n":"\n〔요청문 끝〕\n");}
+      }
+    }
+    return o;
+  }
+  document.addEventListener("click",function(e){
+    var btn=e.target.closest?e.target.closest("button[data-act]"):null;if(!btn)return;
+    var act=btn.getAttribute("data-act");
+    if(act==="md"){save("의왕도시공사_데이터분석_요청문_v1_0.md",buildAll(true),"text/markdown");return;}
+    if(act==="txt"){save("의왕도시공사_데이터분석_요청문_v1_0.txt",buildAll(false),"text/plain");return;}
+    if(act==="print"){window.print();return;}
+    if(act==="copy"){var blk=btn.closest(".pblock");var pre=blk?blk.querySelector("pre.pbox"):null;if(!pre){var card=btn.closest(".card");pre=card?card.querySelector("pre.pbox"):null;}if(!pre)return;var text=pre.textContent.trim();copyText(text).then(function(){markDone(btn);toast("복사되었습니다");},function(){selectPre(pre);toast("자동 복사가 막혀 본문을 선택해 두었습니다. 길게 눌러 복사해 주십시오");});}
+  });
+  var chips=document.querySelectorAll(".chip");var secs=document.querySelectorAll("section.sec");
+  function onScroll(){var y=window.scrollY+90;var cur=secs[0]?secs[0].id:"";for(var i=0;i<secs.length;i++){if(secs[i].offsetTop<=y)cur=secs[i].id;}for(var j=0;j<chips.length;j++){chips[j].classList.toggle("on",chips[j].getAttribute("href")==="#"+cur);}}
+  window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+})();</script><script>(function(){var b=document.querySelector(".totop");if(!b)return;function f(){if(window.scrollY>400)b.classList.add("show");else b.classList.remove("show");}window.addEventListener("scroll",f,{passive:true});f();})();</script></body></html>
